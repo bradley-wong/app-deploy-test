@@ -9,24 +9,16 @@ const port = process.env.PORT || 8080;
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.set('view engine', 'hbs');
-// app.use(express.static(__dirname + '/public'));
 
 app.use((request, response, next) => {
 	response.render('maint.hbs', {
-		time: new Date()
+		maintMsg: 'The site is currently down for maintenance',
+		time: new Date(),
+		admin: 'Contact Bradley if you have any questions'
 	});
-	// var time = new Date().toString();
-	// console.log(`${time}: ${request.method} ${request.url}`);
-	// fs.appendFile('server.log', log + '\n', (error) => {
-	// 	if (error) {
-	// 		console.log('Unable to log message');
-	// 	}
-	// });
-	// next();
 });
 
 app.get('/', (request, response) => {
-	// response.send('<h1>Hello Express!</h1>');
 	response.send({
 		name: 'Your Name',
 		school: [
